@@ -1,0 +1,46 @@
+# .htaccess — حلول صيانة المنازل | Homes Maintenance Solution
+# 301 redirects: old flat .html URLs -> new keyword-slug folder URLs
+# Keeps any old bookmarked/shared/indexed links working after the URL restructure.
+
+# Custom 404 page — branded, with nav back into the site (instead of the bare LiteSpeed error page)
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+# Canonical host/scheme: force https (uncomment/adjust if not already handled by the host)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# index.html -> root
+RewriteRule ^index\.html$ / [R=301,L]
+
+# old live combined services page (pre-restructure) -> new plumbing hub
+Redirect 301 /services.html /sabaka-riyadh/
+
+# old flat pages -> new keyword-slug folders
+RewriteRule ^about-us\.html$ /about-us/ [R=301,L]
+RewriteRule ^plumbing-services\.html$ /sabaka-riyadh/ [R=301,L]
+RewriteRule ^electrician-services\.html$ /kahraba-riyadh/ [R=301,L]
+RewriteRule ^drain-cleaning-riyadh\.html$ /tasleek-majari-riyadh/ [R=301,L]
+RewriteRule ^leak-detection-riyadh\.html$ /kashf-tasarubat-riyadh/ [R=301,L]
+RewriteRule ^pipe-installation-riyadh\.html$ /tarkeeb-masayer-riyadh/ [R=301,L]
+RewriteRule ^water-heater-service-riyadh\.html$ /sakhanat-miyah-riyadh/ [R=301,L]
+RewriteRule ^water-pump-service-riyadh\.html$ /madakhat-miyah-riyadh/ [R=301,L]
+RewriteRule ^general-plumbing-riyadh\.html$ /sabaka-amma-riyadh/ [R=301,L]
+RewriteRule ^electrical-wiring-riyadh\.html$ /tamdidat-kahrabaiya-riyadh/ [R=301,L]
+RewriteRule ^electrical-maintenance-riyadh\.html$ /siyana-kahrabaiya-riyadh/ [R=301,L]
+RewriteRule ^electrical-panel-service-riyadh\.html$ /lawhat-tawzee-riyadh/ [R=301,L]
+RewriteRule ^electrical-fault-repair-riyadh\.html$ /islah-aatal-kahrabaiya-riyadh/ [R=301,L]
+RewriteRule ^short-circuit-detection-riyadh\.html$ /kashf-dawaer-qasira-riyadh/ [R=301,L]
+RewriteRule ^lighting-installation-riyadh\.html$ /tarkeeb-inara-riyadh/ [R=301,L]
+
+# Never block assets — Google needs them to render the page
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|webp|jpg|jpeg|png|svg|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# Serve index.html as the directory index (default on virtually all Apache/LiteSpeed hosts,
+# listed explicitly in case the host's default DirectoryIndex was ever changed)
+DirectoryIndex index.html

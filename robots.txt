@@ -1,0 +1,42 @@
+# robots.txt — حلول صيانة المنازل | Homes Maintenance Solution
+
+User-agent: *
+Allow: /
+
+# ---- AI assistants / LLM crawlers ----
+# Explicitly allowed so this site can be discovered, cited and summarized
+# in AI Overviews, ChatGPT, Claude, Perplexity and similar AI search answers.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://homesmaintenancesolution.com/sitemap.xml
